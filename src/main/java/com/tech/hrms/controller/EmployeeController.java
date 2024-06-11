@@ -15,7 +15,8 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping("/addEmployee")
-    public void createEmployee(@RequestBody Employee employee) {
+    public void createEmployee(@RequestBody Employee employee)
+    {
         employeeService.saveEmployee(employee);
     }
 
@@ -31,10 +32,20 @@ public class EmployeeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "testing localhost";
+    @PutMapping("/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) {
+        Employee updatedEmployee = employeeService.updateEmployee(id, employeeDetails);
+        return ResponseEntity.ok(updatedEmployee);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
+        employeeService.deleteEmployee(id);
+        return ResponseEntity.noContent().build();
+    }
 
+    @GetMapping("/test")
+    public String test() {
+        return "testing localhost";
+    }
 }
