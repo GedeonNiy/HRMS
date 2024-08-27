@@ -2,6 +2,7 @@ package com.tech.hrms.service;
 import com.tech.hrms.model.Employee;
 import com.tech.hrms.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.AbstractPersistable_;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,13 +25,26 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
+//    public void deleteEmployee(Long id) {
+//        employeeRepository.deleteById(id);
+//    }
+
     public void deleteEmployee(Long id) {
-        employeeRepository.deleteById(id);
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
+
+        employeeRepository.delete(employee);
     }
 
     public Employee updateEmployee(Long id, Employee employeeDetails) {
+        // Check if the ID is null
+        if (id == null) {
+            throw new IllegalArgumentException("Employee ID must not be null");
+        }
+
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + id));
+
 
         employee.setFirstName(employeeDetails.getFirstName());
         employee.setLastName(employeeDetails.getLastName());
@@ -45,4 +59,5 @@ public class EmployeeService {
 
         return employeeRepository.save(employee);
     }
+
 }
