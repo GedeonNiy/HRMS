@@ -1,4 +1,4 @@
-package com.tech.hrms.model;
+package com.muhikira.hrms.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

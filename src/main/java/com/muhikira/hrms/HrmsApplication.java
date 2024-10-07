@@ -1,4 +1,4 @@
-package com.tech.hrms;
+package com.muhikira.hrms;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -8,9 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.tech.hrms.repository")
-@EntityScan(basePackages = "com.tech.hrms.model")
-@OpenAPIDefinition(info = @Info(title = "List of API", version = "1.0", description = "All the APIs Information"))
+@EnableJpaRepositories(basePackages = "com.muhikira.hrms.repository")
+@EntityScan(basePackages = "com.muhikira.hrms.model") @OpenAPIDefinition(info = @Info(title = "List of API", version = "1.0", description = "All the APIs Information"))
 public class HrmsApplication {
 
     public static void main(String[] args) {

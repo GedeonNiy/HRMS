@@ -1,4 +1,4 @@
-package com.tech.hrms.service;
+package com.muhikira.hrms.service;
 
 public class ResourceNotFoundException extends RuntimeException {
     private static final long serialVersionUID = 1L;
