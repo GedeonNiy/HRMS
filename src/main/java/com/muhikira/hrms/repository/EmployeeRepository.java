@@ -21,9 +21,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     // Find employees by last name
     List<Employee> findByLastName(String lastName);
 
-    // Find employees by department
-    List<Employee> findByDepartment(String department);
-
     // Find employees by salary greater than or equal to a value
     List<Employee> findBySalaryGreaterThanEqual(BigDecimal salary);
 
